@@ -1,11 +1,33 @@
+
 ## Docker commands used to build the application 
 # TODO: insert the docker build command
+docker build -t udacity-python-techtrends .
+
+# To Tag
+docker tag udacity-python-techtrends:latest udacity-python-techtrends:v1.0
+
+# To Rebuid
+docker build -t udacity-python-techtrends:v1.0 .
+
 
 ## Docker commands used to run the application
 # TODO: insert the docker run command
+docker run -d -p 127.0.0.1:7111:3111 udacity-python-techtrends:v1.0
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
+docker logs --tail 1000 -f 20a9211fcf670e802622c6c9390a28d99d104b209391442c80a817dc581e0310
 
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 458-885-235
+[2021-08-30 11:52:16,114] INFO in app: Index Fetch Successfull
+172.17.0.1 - - [30/Aug/2021 11:52:16] "GET / HTTP/1.1" 200 -
