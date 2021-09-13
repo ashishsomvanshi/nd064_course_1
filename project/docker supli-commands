@@ -1,3 +1,0 @@
-docker build -t udacity-python-techtrends .
-docker tag udacity-python-techtrends:latest udacity-python-techtrends:v1.0
-docker run udacity-python-techtrends:v1.0
