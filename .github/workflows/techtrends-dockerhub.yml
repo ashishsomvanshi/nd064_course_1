@@ -62,5 +62,6 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
-          push: true
-          tags: themultitoolguy/techtrends:v${{ steps.meta.outputs.tags }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
