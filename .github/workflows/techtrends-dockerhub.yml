@@ -8,6 +8,8 @@ name: TechTrends - Package with Docker
 on:
   push:
     branches: main
+    tags:
+      - "v*.*.*"
   pull_request:
     branches: main
 
@@ -43,4 +45,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: themultitoolguy/techtrends:V1
+          tags: themultitoolguy/techtrends:v${{ steps.meta.outputs.tags }}
