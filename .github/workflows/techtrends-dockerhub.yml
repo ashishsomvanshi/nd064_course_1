@@ -43,4 +43,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: themultitoolguy/techtrends:latest
+          tags: themultitoolguy/techtrends:V1
