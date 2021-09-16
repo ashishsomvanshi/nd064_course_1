@@ -56,5 +56,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: themultitoolguy/techrends${{ steps.meta.outputs.tags }}
+          tags: themultitoolguy/techrends:${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
