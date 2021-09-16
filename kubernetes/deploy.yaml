@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: techtrends-deployment
+  name: techtrends
   labels:
     app: techtrends
   namespace: sandbox
