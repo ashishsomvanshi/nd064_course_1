@@ -26,16 +26,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          # generate Docker tags based on the following events/attributes
-          tags: |
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha
+        name: Generate build ID
+        id: prep
+        run: |
+             branch=${GITHUB_REF##*/}
+             sha=${GITHUB_SHA::8}
+             ts=$(date +%s)
+             echo "::set-output name=BUILD_ID::${branch}-${sha}-${ts}" 
       -
           name: Set up QEMU
           uses: docker/setup-qemu-action@v1
@@ -56,5 +53,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: themultitoolguy/techrends:${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: themultitoolguy/techrends:${{ steps.prep.outputs.BUILD_ID }}
