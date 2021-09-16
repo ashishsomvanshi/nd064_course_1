@@ -53,4 +53,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: themultitoolguy/techrends:${{ steps.prep.outputs.BUILD_ID }}
+          tags: themultitoolguy/techtrends:${{ steps.prep.outputs.BUILD_ID }}
