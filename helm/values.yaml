@@ -8,8 +8,8 @@ service:
   type: ClusterIP
 
 image:
-  repository: themultitoolguy/techtrends:main-d9976c81-1631751313
-  tag: latest
+  repository: themultitoolguy/techtrends
+  tag: main-d9976c81-1631751313
   pullPolicy: IfNotPresent
 replicaCount: 1
 
