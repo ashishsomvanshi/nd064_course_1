@@ -20,14 +20,14 @@ spec:
           name: techtrends
           ports:
             - containerPort:  {{ .Values.containerPort }}
-              protocol: {{ .Values.service.protocol }}
-           resources:
-          requests:
-            memory: {{ .Values.resources.requests.memory }}
-            cpu: {{ .Values.resources.requests.cpu }}
-          limits:
-            memory: {{ .Values.resources.limits.memory }}
-            cpu: {{ .Values.resources.limits.cpu }}
+          protocol: {{ .Values.service.protocol }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
           readinessProbe:
             httpGet:
               path: {{ .Values.livenessProbe.httpGet.path }}
@@ -36,4 +36,5 @@ spec:
             httpGet:
               path: {{ .Values.livenessProbe.httpGet.path }}
               port: {{ .Values.livenessProbe.httpGet.port }}
+
 
