@@ -1,6 +1,7 @@
 import sqlite3
 import traceback
 import sys
+import logging
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -39,7 +40,7 @@ def get_post(post_id):
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
         health_flag = 0
-        app.logger.info('Post Fetch Unsuccessfull')
+        app.logger.error('Post Fetch Unsuccessfull')
     finally:
         connection.close()
     return post
@@ -66,7 +67,7 @@ def index():
         exc_type, exc_value, exc_tb = sys.exc_info()
         print(traceback.format_exception(exc_type, exc_value, exc_tb))
         health_flag = 0
-        app.logger.info('Index Fetch Unsuccessfull')
+        app.logger.error('Index Fetch Unsuccessfull')
     finally:
         connection.close()
     return render_template('index.html', posts=posts)
@@ -151,7 +152,7 @@ def create():
                 exc_type, exc_value, exc_tb = sys.exc_info()
                 print(traceback.format_exception(exc_type, exc_value, exc_tb))
                 health_flag = 0
-                app.logger.info('Post Fetch Unsuccessfull')
+                app.logger.error('Post Fetch Unsuccessfull')
             finally:
                 connection.close()
 
@@ -161,5 +162,17 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111', debug=True)
+    formatter = logging.Formatter(
+        '%(levelname)s:%(name)s:%(asctime)s, %(message)s', '%d/%m/%Y, %H:%M:%S')
+    app.logger.setLevel(logging.DEBUG)
+
+    stdout = logging.StreamHandler(sys.stdout)
+    stdout.setFormatter(formatter)
+    app.logger.addHandler(stdout)
+
+    stderr = logging.StreamHandler(sys.stderr)
+    stderr.setFormatter(formatter)
+    app.logger.addHandler(stderr)
+    app.run(host='0.0.0.0', port='3111', debug=True)
+
 
