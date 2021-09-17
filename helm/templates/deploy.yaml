@@ -20,7 +20,7 @@ spec:
           name: techtrends
           ports:
             - containerPort:  {{ .Values.containerPort }}
-          protocol: {{ .Values.service.protocol }}
+              protocol: {{ .Values.service.protocol }}
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
