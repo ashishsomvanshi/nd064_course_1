@@ -9,7 +9,7 @@ service:
 
 image:
   repository: themultitoolguy/techtrends
-  tag: main-d9976c81-1631751313
+  tag: main-43e841ff-1631879206
   pullPolicy: IfNotPresent
 replicaCount: 1
 
